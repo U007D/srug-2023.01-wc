@@ -1,0 +1,20 @@
+[package]
+name = "wc"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[lib]
+name = "lib"
+path = "src/lib.rs"
+
+[[bin]]
+name = "wc"
+path = "src/main.rs"
+
+[dependencies]
+clap = { version = "4.3.11", features = ["derive"] }
+thiserror = "1.0.43"
+
+[dev-dependencies]
+assert2 = "0.3.11"
