@@ -1,5 +1,6 @@
 mod args;
 
+use std::process::ExitCode;
 use std::{fs::File, io::BufReader};
 
 use clap::Parser;
@@ -18,8 +19,12 @@ fn inner_main() -> Result<()> {
     Ok(())
 }
 
-fn main() {
-    if let Err(error) = inner_main() {
-        eprintln!("{error}")
+fn main() -> ExitCode {
+    match inner_main() {
+        Err(error) => {
+            eprintln!("{error}");
+            ExitCode::FAILURE
+        }
+        Ok(_) => ExitCode::SUCCESS,
     }
 }
